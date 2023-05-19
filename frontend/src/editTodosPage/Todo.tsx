@@ -12,13 +12,10 @@ function Todo({ todo } : TodoProps) {
                 <Col xs="12" md="8">
                     <h2>{todo.name}</h2>
                 </Col>
-                <Col className="d-flex justify-content-end">
-                    <h3>{new Date(todo.date).toLocaleDateString()}</h3>
-                </Col>
             </Row>
             <Row>
                 <Col>
-                    {/* <p>{todo.description}</p> */}
+                    <p>{todo.description}</p>
                 </Col>
             </Row>
         </Container>

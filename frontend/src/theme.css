@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;800&display=swap');
 
 :root {
-    --background: #151515;
+    --background: #1e1e1e;
     --font-color: #eee;
     --primary-light: #7678ed;
     --primary-dark: #3d348b;
@@ -28,6 +28,6 @@ h1, h2, h3, h4, h5, h6 {
 .todo {
     background: var(--primary-gradient);
     border-radius: 10px;
-    width: 150px;
-    height: 100px;
+    /* width: 150px; */
+    /* height: 150px; */
 }

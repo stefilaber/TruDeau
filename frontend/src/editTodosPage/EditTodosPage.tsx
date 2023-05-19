@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Todo from "./Todo";
 
 export interface ITodo {
@@ -40,21 +40,29 @@ function EditTodosPage() {
     return (
         <>
             <h1>Edit your Todos</h1>
+            <Container>
             {
                 Array.from(todoMap.keys()).map(date => {
                     const todos = todoMap.get(date)
-                    if (todos) {
-                        return (
-                            <Container>
-                                <h2>{date}</h2>
-                                {
-                                    todos.map(todo => <Todo todo={todo} />)
-                                }
-                            </Container>
-                        )
-                    }
+                    return (
+                        <Row>
+                            <Col lg="2" className="d-flex align-items-center">
+                                <p style={{ fontSize: "24px" }}>{date}</p>
+                            </Col>
+                            <Col>
+                                <Container fluid>
+                                    <Row>
+                                        {
+                                            todos?.map((todo, index) => <Col xs="6" md="4"><Todo todo={todo} /></Col>)
+                                        }
+                                    </Row>
+                                </Container>
+                            </Col>
+                        </Row>
+                    )
                 })
             }
+            </Container>
         </>
     )
 }
