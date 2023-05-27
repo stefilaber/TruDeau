@@ -76,3 +76,24 @@ h1, h2, h3, h4, h5, h6 {
 .todos-date-row:not(:last-child) {
     margin-bottom: 10px;
 }
+
+.modal-button {
+    font-size: x-large;
+    border-color: var(--primary-dark);
+    color: var(--font-color);   
+    width: 32.5%;
+    height: 100%;
+}
+
+.modal-button:hover {
+    border-color: var(--primary-dark);
+    background-color: var(--primary-light);
+    color: var(--font-color);
+}
+
+.modal-div {
+    padding: 20px;
+    height: 90px;
+}
+
+

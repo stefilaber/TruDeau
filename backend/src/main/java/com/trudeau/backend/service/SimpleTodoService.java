@@ -19,4 +19,8 @@ public class SimpleTodoService {
     public List<SimpleTodo> getTodos() {
         return simpleTodoRepository.findAll();
     }
+
+    public SimpleTodo addTodo(SimpleTodo simpleTodo) {
+        return simpleTodoRepository.save(simpleTodo);
+    }
 }
