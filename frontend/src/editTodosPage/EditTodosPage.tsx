@@ -39,7 +39,7 @@ function EditTodosPage() {
 
     return (
         <>
-            <Container className="mt-5">
+            <Container>
             {
                 Array.from(todoMap.keys()).map(date => {
                     const todos = todoMap.get(date)
