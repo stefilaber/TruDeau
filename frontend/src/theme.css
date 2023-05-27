@@ -18,6 +18,7 @@ body {
 
     font-family: "Inter", sans-serif !important;
     color: var(--font-color);
+    padding-top: 25px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,4 +76,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .todos-date-row:not(:last-child) {
     margin-bottom: 10px;
+}
+
+.toggle-divider > .toggle {
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-divider > .toggle > div {
+    user-select: none;
+}
+
+.toggle-divider > .toggle > div:first-child,
+.toggle-divider > .toggle > div:last-child {
+    flex: 1;
+    border-top: 2px solid var(--font-color);
+    margin-top: 14px;
 }
