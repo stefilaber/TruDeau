@@ -39,21 +39,20 @@ function EditTodosPage() {
 
     return (
         <>
-            <h1>Edit your Todos</h1>
-            <Container>
+            <Container className="mt-5">
             {
                 Array.from(todoMap.keys()).map(date => {
                     const todos = todoMap.get(date)
                     return (
-                        <Row>
+                        <Row className="todos-date-row">
                             <Col lg="2" className="d-flex align-items-center">
-                                <p style={{ fontSize: "24px" }}>{date}</p>
+                                <p>{date}</p>
                             </Col>
                             <Col>
                                 <Container fluid>
                                     <Row>
                                         {
-                                            todos?.map((todo, index) => <Col xs="6" md="4"><Todo todo={todo} /></Col>)
+                                            todos?.map(todo => <Col xs="12" sm="6" md="4"><Todo todo={todo} /></Col>)
                                         }
                                     </Row>
                                 </Container>

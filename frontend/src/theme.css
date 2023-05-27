@@ -3,10 +3,9 @@
 :root {
     --background: #1e1e1e;
     --font-color: #eee;
-    --primary-light: #7678ed;
-    --primary-dark: #3d348b;
-    /* --primary-gradient: linear-gradient(140deg, var(--primary-light) 0%, var(--primary-dark) 100%); */
-    --primary-gradient: var(--primary-dark);
+    --primary-light: #585aaf;
+    --primary-dark: #30296e;
+    --primary-gradient: linear-gradient(140deg, var(--primary-light) 0%, var(--primary-dark) 100%);
 }
 
 html, body {
@@ -26,8 +25,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .todo {
-    background: var(--primary-gradient);
+    background-color: var(--primary-dark);
     border-radius: 10px;
     /* width: 150px; */
     /* height: 150px; */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.todo:hover {
+    background-color: var(--primary-light);
+}
+
+.todos-date-row > div > p {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.todos-date-row .container-fluid {
+    border-left: 3px solid var(--font-color);
+    border-top: 3px solid var(--font-color);
+    border-bottom: 3px solid var(--font-color);
+    border-radius: 20px 0px 0px 20px;
+    padding: 0;
+}
+
+.todos-date-row .container-fluid > .row {
+    margin: 10px 0;
+}
+
+.todos-date-row .container-fluid::before,
+.todos-date-row .container-fluid::after {
+    --border-length: 50px;
+
+    content: "";
+    display: block;
+    border-top: 5px solid var(--background);
+    position: relative;
+    width: calc(100% - var(--border-length));
+    left: var(--border-length);
+}
+
+.todos-date-row .container-fluid::before {
+    top: -4px;
+}
+
+.todos-date-row .container-fluid::after {
+    top: 4px;
+}
+
+.todos-date-row:not(:last-child) {
+    margin-bottom: 10px;
 }
