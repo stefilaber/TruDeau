@@ -19,6 +19,8 @@ body {
     font-family: "Inter", sans-serif !important;
     color: var(--font-color);
     padding-top: 25px;
+
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -62,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     border-top: 5px solid var(--background);
     position: relative;
-    width: calc(100% - var(--border-length));
+    /* width: calc(100% - var(--border-length)); */
     left: var(--border-length);
 }
 
