@@ -4,9 +4,14 @@ import EditTodosPage from './editTodosPage/EditTodosPage.tsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./theme.css"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <EditTodosPage />
-  </React.StrictMode>,
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<EditTodosPage />} />
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
 )
