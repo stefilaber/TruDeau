@@ -18,6 +18,9 @@ body {
 
     font-family: "Inter", sans-serif !important;
     color: var(--font-color);
+    padding-top: 25px;
+
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,8 +30,6 @@ h1, h2, h3, h4, h5, h6 {
 .todo {
     background-color: var(--primary-dark);
     border-radius: 10px;
-    /* width: 150px; */
-    /* height: 150px; */
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -61,7 +62,6 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     border-top: 5px solid var(--background);
     position: relative;
-    width: calc(100% - var(--border-length));
     left: var(--border-length);
 }
 
@@ -75,4 +75,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .todos-date-row:not(:last-child) {
     margin-bottom: 10px;
+}
+
+.toggle-divider > .toggle {
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-divider > .toggle > div {
+    user-select: none;
+}
+
+.toggle-divider > .toggle > div:first-child,
+.toggle-divider > .toggle > div:last-child {
+    flex: 1;
+    border-top: 2px solid var(--font-color);
+    margin-top: 14px;
 }
