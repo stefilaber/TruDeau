@@ -21,22 +21,20 @@ function EditTodosPage() {
     useEffect(() => fetchTodos(setPastTodos, setFutureTodos), [])
 
     return (
-        <>
-            <Container>
-                <ToggleDivider text="past TODOs">
-                    <TodosByDateList todos={pastTodos} />
-                </ToggleDivider>
-                <TodosByDateList todos={futureTodos} />
-                <Row>
-                    <Col lg="2"></Col>
-                    <Col>
-                        <div className="modal-div">
-                            <AddTodoModal fetchTodos={() => fetchTodos(setPastTodos, setFutureTodos)} />
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </>
+        <Container>
+            <ToggleDivider text="past TODOs">
+                <TodosByDateList todos={pastTodos} />
+            </ToggleDivider>
+            <TodosByDateList todos={futureTodos} />
+            <Row>
+                <Col lg="2"></Col>
+                <Col>
+                    <div className="modal-div">
+                        <AddTodoModal fetchTodos={() => fetchTodos(setPastTodos, setFutureTodos)} />
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
