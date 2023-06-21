@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-import { useState } from 'react';
 import axios from 'axios';
-import { Col, Row } from 'react-bootstrap';
+import { useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { PlusLg } from 'react-bootstrap-icons';
 import { ITodo } from './EditTodosPage';
 
 interface Props {
@@ -21,7 +22,7 @@ function AddNewTodoModal({ setTodos }: Props) {
     const handleShow = () => setShow(true);
 
     const addTodo = () => {
-        axios.post('http://localhost:8080/simpleTodos', { name: name, description: description, date: date}).then(response => {
+        axios.post('http://localhost:8080/simpleTodos', { name: name, description: description, date: date }).then(response => {
             console.log(response.data)
             axios.get<ITodo[]>('http://localhost:8080/simpleTodos').then(response => {
                 const todos: ITodo[] = response.data
@@ -32,12 +33,11 @@ function AddNewTodoModal({ setTodos }: Props) {
 
     return (
         <>
-            <Button variant="outline-dark" className='modal-button' onClick={handleShow}>
-                +
+            <Button className='modal-button' onClick={handleShow}>
+                <PlusLg />
             </Button>
 
             <Modal show={show} onHide={handleClose} animation={false}
-                size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
             >
@@ -48,18 +48,20 @@ function AddNewTodoModal({ setTodos }: Props) {
                 </Modal.Header>
                 <Modal.Body>
                     <form>
-                        <Row>
-                            <Col> <label> Name </label> </Col>
-                            <Col> <input type="text" name="name" value={name} onChange={event => setName(event.target.value)} /> </Col>
-                        </Row>
-                        <Row>
-                            <Col><label> Description </label></Col>
-                            <Col><input type="text" name="description" value={description} onChange={event => setDescription(event.target.value)} /></Col>
-                        </Row>
-                        <Row>
-                            <Col><label> Date </label></Col>
-                            <Col><input type="date" name="date" value={date} onChange={event => setDate(event.target.value)} /></Col>
-                        </Row>
+                        <Container className='p-2'>
+                            <Row className="mb-2">
+                                <Col xs="6"> <label>Name</label> </Col>
+                                <Col xs="6"> <input type="text" name="name" value={name} onChange={event => setName(event.target.value)} className='w-100'/> </Col>
+                            </Row>
+                            <Row className="mb-2">
+                                <Col xs="6"><label>Description</label></Col>
+                                <Col xs="6"><input type="text" name="description" value={description} onChange={event => setDescription(event.target.value)} className='w-100'/></Col>
+                            </Row>
+                            <Row className="mb-2">
+                                <Col xs="6"><label>Date</label></Col>
+                                <Col xs="6"><input type="date" name="date" value={date} onChange={event => setDate(event.target.value)} className='w-100'/></Col>
+                            </Row>
+                        </Container>
                     </form>
 
                 </Modal.Body>

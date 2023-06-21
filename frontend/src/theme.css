@@ -78,11 +78,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-button {
-    font-size: x-large;
+    border-radius: 100px;
     border-color: var(--primary-dark);
+    background-color: var(--primary-dark);
     color: var(--font-color);   
-    width: 32.5%;
-    height: 100%;
+    width: 70px;
+    height: 70px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.76);
 }
 
 .modal-button:hover {
@@ -94,6 +103,42 @@ h1, h2, h3, h4, h5, h6 {
 .modal-div {
     padding: 20px;
     height: 90px;
+}
+
+.modal-content {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom-color: #565656;
+}
+
+.modal-footer {
+    border-top-color: #565656;
+}
+
+.btn-primary {
+    border-color: var(--primary-dark);
+    background-color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+    border-color: var(--primary-dark);
+    background-color: var(--primary-light);
+    color: var(--font-color);
+}
+
+.btn-secondary {
+    border-color: #474d52;
+    background-color: #474d52;
+    color: var(--font-color);
+}
+
+.btn-secondary:hover {
+    border-color: #474d52;
+    background-color: #646e74;
+    color: var(--font-color);
 }
 
 
