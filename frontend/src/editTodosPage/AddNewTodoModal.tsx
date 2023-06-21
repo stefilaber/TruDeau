@@ -1,33 +1,27 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
 import axios from 'axios';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { PlusLg } from 'react-bootstrap-icons';
-import { ITodo } from './EditTodosPage';
 
 interface Props {
-    setTodos: (todos: ITodo[]) => void
+    fetchTodos: () => void
 }
 
-function AddNewTodoModal({ setTodos }: Props) {
+function AddNewTodoModal({ fetchTodos }: Props) {
 
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [date, setDate] = useState('');
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [date, setDate] = useState('')
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
     const addTodo = () => {
-        axios.post('http://localhost:8080/simpleTodos', { name: name, description: description, date: date }).then(response => {
-            console.log(response.data)
-            axios.get<ITodo[]>('http://localhost:8080/simpleTodos').then(response => {
-                const todos: ITodo[] = response.data
-                setTodos(todos)
-            })
+        axios.post('http://localhost:8080/simpleTodos', { name: name, description: description, date: date }).then(() => {
+            fetchTodos()
         })
     }
 
@@ -69,13 +63,13 @@ function AddNewTodoModal({ setTodos }: Props) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={event => { addTodo(); handleClose(); }}>
+                    <Button variant="primary" onClick={() => { addTodo(); handleClose(); }}>
                         Add todo
                     </Button>
                 </Modal.Footer>
             </Modal>
         </>
-    );
+    )
 }
 
 export default AddNewTodoModal

@@ -1,82 +1,53 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Todo from "./Todo";
+import { Col, Container, Row } from "react-bootstrap";
+import ToggleDivider from "../ToggleDivider";
 import AddTodoModal from "./AddNewTodoModal";
+import TodosByDateList from "./TodosByDateList";
 
 export interface ITodo {
-    id: number;
-    name: string;
-    description?: string;
-    date: Date;
-    done: boolean;
+    id: number
+    name: string
+    description?: string
+    date: Date
+    done: boolean
 }
 
 function EditTodosPage() {
 
-    const [todoMap, setTodoMap] = useState<Map<string, ITodo[]>>(new Map())
+    const [pastTodos, setPastTodos] = useState<ITodo[]>([])
+    const [futureTodos, setFutureTodos] = useState<ITodo[]>([])
 
-    const setTodos = (todos :ITodo[]) => {
-        
-        const todoMap: Map<string, ITodo[]> = new Map()
-
-        todos.forEach(todo => {
-            const date = new Date(todo.date).toLocaleDateString()
-            const list: ITodo[] | undefined = todoMap.get(date)
-
-            if (list) {
-                list.push(todo)
-            } else {
-                todoMap.set(date, [todo])
-            }
-
-        })
-
-        console.log(todoMap)
-        setTodoMap(todoMap)
-    }
-
-    useEffect(() => {
-        axios.get<ITodo[]>('http://localhost:8080/simpleTodos').then(response => {
-            setTodos(response.data)
-        })
-    }, [])
+    useEffect(() => fetchTodos(setPastTodos, setFutureTodos), [])
 
     return (
         <>
             <Container>
-                {
-                    Array.from(todoMap.keys()).map(date => {
-                        const todos = todoMap.get(date)
-                        return (
-                            <Row className="todos-date-row">
-                                <Col lg="2" className="d-flex align-items-center">
-                                    <p>{date}</p>
-                                </Col>
-                                <Col>
-                                    <Container fluid>
-                                        <Row>
-                                            {
-                                                todos?.map(todo => <Col xs="12" sm="6" md="4"><Todo todo={todo} /></Col>)
-                                            }
-                                        </Row>
-                                    </Container>
-                                </Col>
-                            </Row>
-                        )
-                    })
-                }
+                <ToggleDivider text="past TODOs">
+                    <TodosByDateList todos={pastTodos} />
+                </ToggleDivider>
+                <TodosByDateList todos={futureTodos} />
                 <Row>
                     <Col lg="2"></Col>
                     <Col>
                         <div className="modal-div">
-                            <AddTodoModal setTodos={setTodos} />
+                            <AddTodoModal fetchTodos={() => fetchTodos(setPastTodos, setFutureTodos)} />
                         </div>
                     </Col>
                 </Row>
             </Container>
         </>
     )
+}
+
+function fetchTodos(setPastTodos: (todos: ITodo[]) => void, setFutureTodos: (todos: ITodo[]) => void) {
+    axios.get<ITodo[]>("http://localhost:8080/simpleTodos").then(response => {
+        const todos = response.data
+        const now = new Date()
+
+        setPastTodos(todos.filter(todo => new Date(todo.date) < now))
+        setFutureTodos(todos.filter(todo => new Date(todo.date) >= now))
+    })
 }
 
 export default EditTodosPage
