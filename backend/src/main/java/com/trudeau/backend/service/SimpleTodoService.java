@@ -22,4 +22,8 @@ public class SimpleTodoService {
     public List<SimpleTodo> getTodos() {
         return simpleTodoRepository.findAllByOrderByDateAsc();
     }
+
+    public SimpleTodo addTodo(SimpleTodo simpleTodo) {
+        return simpleTodoRepository.save(simpleTodo);
+    }
 }
