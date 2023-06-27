@@ -157,3 +157,13 @@ h1, h2, h3, h4, h5, h6 {
     border-top: 2px solid var(--font-color);
     margin-top: 14px;
 }
+
+/* DATE SWITCHER */
+.date-switcher {
+    max-width: 600px;
+}
+
+/* UTIL */
+.underlined {
+    text-decoration: underline;
+}
