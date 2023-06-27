@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { ITodo } from "../editTodosPage/EditTodosPage"
 import axios from "axios"
 import Todo from "../editTodosPage/Todo"
+import DateSwitcher from "./DateSwitcher"
 
 function LandingPage() {
 
@@ -15,6 +16,7 @@ function LandingPage() {
 
     return (
         <>
+            <DateSwitcher date={date} setDate={setDate} />
             {
                 todos.map(todo => <Todo key={todo.id} todo={todo} />)
             }
