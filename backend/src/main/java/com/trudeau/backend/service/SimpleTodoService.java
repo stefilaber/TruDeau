@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.trudeau.backend.entity.SimpleTodo;
 import com.trudeau.backend.repository.SimpleTodoRepository;
+import com.trudeau.backend.service.exception.EmptyOptionalException;
 
 @Service
 public class SimpleTodoService {
@@ -44,5 +45,18 @@ public class SimpleTodoService {
 
     public SimpleTodo addTodo(SimpleTodo simpleTodo) {
         return simpleTodoRepository.save(simpleTodo);
+    }
+
+    /**
+     * Toggles the done status of a {@link SimpleTodo simple todo}.
+     * @param id the id of the {@link SimpleTodo simple todo}
+     * @return the new done status
+     * @throws EmptyOptionalException if the {@link SimpleTodo simple todo} with the given id does not exist
+     */
+    public boolean toggleTodoDoneStatus(Long id) throws EmptyOptionalException {
+        var todo = simpleTodoRepository.findById(id).orElseThrow(EmptyOptionalException::new);
+        todo.setDone(!todo.isDone());
+        simpleTodoRepository.save(todo);
+        return todo.isDone();
     }
 }
