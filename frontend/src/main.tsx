@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/manage" element={<EditTodosPage />} />
-                <Route path="/category" element={<ManageCategories />} />
+                <Route path="/categories" element={<ManageCategories />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,
