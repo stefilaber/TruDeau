@@ -11,6 +11,13 @@ export interface ITodo {
     description?: string
     date: Date
     done: boolean
+    category: ICategory
+}
+
+export interface ICategory {
+    id: number
+    name: string
+    color: string
 }
 
 function EditTodosPage() {
