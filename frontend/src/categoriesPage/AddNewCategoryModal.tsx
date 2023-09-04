@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { PlusLg } from 'react-bootstrap-icons';
+import Colorful from '@uiw/react-color-colorful';
 
 interface Props {
     fetchCategories: () => void
@@ -12,14 +13,14 @@ interface Props {
 function AddNewCategoryModal({ fetchCategories }: Props) {
 
     const [name, setName] = useState('')
-    const [color, setColor] = useState('')
+    const [color, setColor] = useState('#30296e')
 
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
     const addTodo = () => {
-        axios.post('http://localhost:8080/todoCategories', { name: name, color: color}).then(() => {
+        axios.post('http://localhost:8080/todoCategories', { name: name, color: color }).then(() => {
             fetchCategories()
         })
     }
@@ -43,12 +44,20 @@ function AddNewCategoryModal({ fetchCategories }: Props) {
                     <form>
                         <Container className='p-2'>
                             <Row className="mb-2">
-                                <Col xs="6"> <label>Name</label> </Col>
-                                <Col xs="6"> <input type="text" name="name" value={name} onChange={event => setName(event.target.value)} className='w-100'/> </Col>
+                                <Col xs="4"> <label>Name</label> </Col>
+                                <Col xs="8"> <input style={{borderRadius: "7px"}} type="text" name="name" value={name} onChange={event => setName(event.target.value)} className='w-100' /> </Col>
                             </Row>
                             <Row className="mb-2">
-                                <Col xs="6"><label>Color</label></Col>
-                                <Col xs="6"><input type="text" name="description" value={color} onChange={event => setColor(event.target.value)} className='w-100'/></Col>
+                                <Col xs="4"><label>Color</label></Col>
+                                <Col xs="8"><Colorful
+                                    style={{ width: '100%' }}
+                                    color={color}
+                                    onChange={(color) => {
+                                        setColor(color.hexa);
+                                    }}
+                                    disableAlpha={true}
+                                />
+                                </Col>
                             </Row>
                         </Container>
                     </form>
