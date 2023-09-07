@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import CustomNavbar from './Navbar.tsx';
 import LandingPage from './landingPage/LandingPage.tsx';
+import ManageCategories from './categoriesPage/ManageCategories.tsx';
 import "./theme.css";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/manage" element={<EditTodosPage />} />
+                <Route path="/categories" element={<ManageCategories />} />
             </Routes>
         </BrowserRouter>
     </React.StrictMode>,

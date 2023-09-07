@@ -9,6 +9,7 @@ function CustomNavbar() {
             <Navbar.Collapse>
                 <Nav className="me-auto">
                     <Nav.Link href="/manage">Manage TODOs</Nav.Link>
+                    <Nav.Link href="/categories">Manage Categories</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
