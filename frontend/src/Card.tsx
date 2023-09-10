@@ -4,9 +4,9 @@ import { Col, Container, Row } from "react-bootstrap"
 interface CardProps {
     title: string
     content: string
-    style: React.CSSProperties
-    onMouseEnter: MouseEventHandler
-    onMouseLeave: MouseEventHandler
+    style: React.CSSProperties | undefined
+    onMouseEnter: MouseEventHandler | undefined
+    onMouseLeave: MouseEventHandler | undefined
 }
 
 function Card({ title, content, style, onMouseEnter, onMouseLeave }: CardProps) {
