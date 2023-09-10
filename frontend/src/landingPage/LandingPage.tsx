@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { ITodo } from "../editTodosPage/EditTodosPage"
 import axios from "axios"
-import Todo from "../editTodosPage/Todo"
+import Todo from "../Todo"
 import DateSwitcher from "./DateSwitcher"
 import { Container } from "react-bootstrap"
 

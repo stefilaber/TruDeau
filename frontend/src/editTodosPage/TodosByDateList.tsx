@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import { ITodo } from "./EditTodosPage";
 import { useEffect, useState } from "react";
-import Todo from "./Todo";
+import Todo from "../Todo";
 
 interface Props {
     todos: ITodo[];

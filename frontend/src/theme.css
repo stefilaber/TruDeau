@@ -52,13 +52,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* TODOs */
-.todo {
+.card {
     background-color: var(--primary-dark);
     border-radius: 10px;
     transition: background-color 0.2s ease-in-out;
 }
 
-.todo:hover {
+.card:hover {
     background-color: var(--primary-light);
 }
 
